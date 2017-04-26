@@ -46,7 +46,7 @@ var data=[
 	[
 		{'id': '0', 'value': '宁波铃与'},
 		{'id': '1', 'value': '泰国铃与'},
-		{'id': '0,1', 'value': '泰国铃与'},
+		{'id': '0,1', 'value': '宁波铃与和泰国铃与'},
 	],
 	[
 		{'id': '0', 'value': 'NINGBO LINGYU'},
@@ -57,6 +57,7 @@ var data=[
 var conpanyArr=[
 	{'id': '0', 'value': '宁波铃与'},
 	{'id': '1', 'value': '泰国铃与'},
+	{'id': '0,1', 'value': '宁波铃与和泰国铃与'},
 ]
 var yearData=[
 	{'id': '00001', 'value': '2017年'},
