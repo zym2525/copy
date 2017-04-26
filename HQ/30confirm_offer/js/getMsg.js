@@ -172,7 +172,6 @@
 		}
 	    
 	    
-	    //发布
 	    $('#btn').on('touchstart',function(){
 			$('#shadow').show();
 		})
@@ -192,7 +191,6 @@
 					$('#hintBox').hide();
 				},700)
 			}else{
-				//采纳方案
 				var t=new Date().getTime();
 				var arrPrimeFees=createPrimeFees($('.PrimeFees'),{'Cost20gp':$('#cost20gp'),'Cost40gp':$('#cost40gp'),'Cost40hq':$('#cost40hq'),'Cost45hc':$('#cost45hc'),});
 				var arrFees=createPrimeFees($('.Fees'),{'Cost20gp':$('#cost20gp2'),'Cost40gp':$('#cost40gp2'),'Cost40hq':$('#cost40hq2'),'Cost45hc':$('#cost45hc2'),});
@@ -207,7 +205,6 @@
 						'supplierCompanyCode':json['supplierCompanyCode'],
 					},
 					success:function(json){
-						//修改费用
 						var t=new Date().getTime();
 						$.ajax({
 							type:'POST',
@@ -430,7 +427,6 @@
 			$('#allCostTotal')[0].innerHTML+='<b></b><em>$</em><span class="val tol3">'+total3+'</span>';
 		}
 	}
-	//fees
 	function toTotalFeesAll(){
 		$('#allQuoteTotal')[0].innerHTML='';
 		var total1=0;
@@ -536,13 +532,11 @@
 		}
 	}
 	
-	//费用arr
 	function createPrimeFees(feesObj,json){
 		var arr=[
 			{
 				'feeCode':$('#unit').attr('feeCode'),
 				'currency':Number($('#unit').attr('currency')),
-//				'byOrder':0,
 			}
 		];
 		for(var key in json){
@@ -556,14 +550,12 @@
 				arr.push({
 					'feeCode':$(ele).attr('feeCode'),
 					'currency':Number($(ele).attr('currenys')),
-//					'byOrder':1,
 					'orderPrice':$(ele).find('input').val(),
 				});
 			}else{
 				arr.push({
 					'feeCode':$(ele).attr('feeCode'),
 					'currency':Number($(ele).attr('currenys')),
-//					'byOrder':0,
 					'cost20gp':$(ele).find('.v1').val(),
 					'cost40gp':$(ele).find('.v2').val(),
 				});

@@ -31,8 +31,3 @@ $('.selector').each(function(index,ele){
 		});
 	})
 })
-//$('#carrys').on('touchend',function(){
-//	if($('#carrysName').html()!=''){
-//		$('#companyBox').html()=='';
-//	}
-//})

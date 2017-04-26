@@ -1,4 +1,3 @@
-//拿运价方案
 function getSchemeInfo(fn){
 	var t=new Date().getTime();
 	$.ajax({

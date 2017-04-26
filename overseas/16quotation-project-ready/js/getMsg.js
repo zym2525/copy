@@ -59,7 +59,6 @@
 			
 		
 		for(var i=0;i<data['feesList'].length;i++){
-			//运费
 			if(data['feesList'][i]['feeTypeNum']=='0'){
 				$('#unit').html(arrHyfCurrency[data['feesList'][i]['currency']]).attr({'currency':data['feesList'][i]['currency'],'feeCode':data['feesList'][i]['feeCode']});
 				$('.units').html(arrCurrency[data['feesList'][i]['currency']]);
@@ -96,7 +95,6 @@
 				oDd.attr('byOrder',data['feesList'][i]['byOrder']);
 				oDd.attr('feeCode',data['feesList'][i]['feeCode']);
 				$('#append dt').after(oDd);
-//				toTotalAll();
 			}
 		}
 		$('#append dd').eq(length-1).addClass('cb');
@@ -114,7 +112,6 @@
 		updateFees(JSON.stringify(arrFees),forwardScheme);
 	})
 	
-	//修改费用
 	$('.comb').on('touchstart',function(){
 		$('.updateFee').hide();
 		$('.addfees').hide();
@@ -217,12 +214,10 @@
 		open('../16quotation-project-ready/16.html');
 	})
 	
-	//算费用
 	function toTotal(oParent){
 		var total=Number(oParent.find('.v1').val())*Number(oParent.find('.num1').text())+Number(oParent.find('.v2').val())*Number(oParent.find('.num2').text());
 		oParent.find('.total2').text(total);
 	}
-	//费用arr
 	function createPrimeFees(feesObj,json){
 		var arr=[
 			{

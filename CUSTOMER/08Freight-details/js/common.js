@@ -1,9 +1,4 @@
 $(function(){
-//	var oBtn=document.getElementById('btn');
-//	
-//	oBtn.addEventListener('touchstart',function(){
-//		
-//	},false)
 	var data=JSON.parse(sessionStorage.getItem('schemes'));
 	console.log(data)
 	setCookie('schemeCode',data.schemeCode);

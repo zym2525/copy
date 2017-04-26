@@ -56,7 +56,6 @@ $(function(){
 			})
 			
 //		})
-		//懒加载
 		$('.enterances2').on('scroll',function(){
 			if(($(this)[0].scrollHeight-100)<=($(this).height()+$(this).scrollTop())){
 				switch (getCookie('nav1Count')){
@@ -79,7 +78,6 @@ $(function(){
 				cancel()
 				$(this).scrollTop($(this).scrollTop()+50)
 			}
-//			return false;
 		})
 		
 		$('.enterances3').on('scroll',function(){
@@ -133,7 +131,6 @@ $(function(){
 			findByOrder(orderNum,setNewNodes);
 			findHistoryOrder(orderNum2,setNewNodes2)
 		})
-		//加载询盘
 		function loadEnquirys(){
 			if(bSinEnquirys) return;
 			bSinEnquirys=true;
@@ -180,9 +177,6 @@ $(function(){
 						}
 					}
 						$('.enterances2').scrollTop(arr2[getCookie('nav1Count')]);
-//					$('#enquiry1').scrollTop(arr2[0])
-//					$('#enquiry2').scrollTop(arr2[1])
-//					$('#enquiry3').scrollTop(arr2[2])
 				}else{
 					getEnquirys(getCookie('accessToken'),0,iNav1Num1,setEnquirys0);
 					getEnquirys(getCookie('accessToken'),1,iNav1Num2,setEnquirys1);
@@ -191,7 +185,6 @@ $(function(){
 				
 			}
 		}
-		//加载物流
 		function loadNodes(){
 			if(bSinlogistics) return;
 			bSinlogistics=true;
@@ -232,7 +225,6 @@ $(function(){
 			}
 		}
 		
-		//取消询盘
 		function cancel(){
 			arrEnquirys1.forEach(function(ele,index){
 				ele.querySelectorAll('.cancel')[0].onclick=cancelEnquirys;
@@ -273,7 +265,6 @@ $(function(){
 									$('#shadow1').hide();
 									$('#text3').html('')
 									
-//									putEnquirys(arrEnquirys1,document.getElementById('enquiry1'));
 									$(ele).remove();
 									$('#enquiry3').scrollTop(0);
 									if(($('.enterances2 .enquiry')[0].scrollHeight)<=($('.enterances2 .enquiry').height()+$('.enterances2 .enquiry').scrollTop())){
@@ -344,14 +335,12 @@ function setEnquirys2(data,iNum){
 	putEnquirys(arrEnquirys3,oContent);
 	$('.nav1 li:last-child .n').html(sessionStorage.getItem('lengths3'));
 }
-//询盘
 function templateEnquirys0(id,json){
 	var oTmp=document.getElementById(id);
     var oSection=oTmp.cloneNode(true);
     var oNum=oSection.getElementsByClassName('num')[0];
     oSection.removeAttribute('id');
 //  oSection.setAttribute('schemeCode',json['schemeCode']);
-    //查运价方案
     if(json['schemeStatus']<=3){
     	 oSection.className='container bReady';
     	isClick($(oSection),function(oSection){
@@ -403,7 +392,6 @@ function templateEnquirys0(id,json){
     return oSection;
 }
 
-//订单
 function templateNodes(id,json){
 	var oTmp=document.getElementById(id);
 	var oDiv=oTmp.cloneNode(true);

@@ -59,17 +59,6 @@
 		if($('#endDate').html()!='结束时间'&&$('#endDate').html()!='End Time'){
 			endDate=$('#endDate').html();
 		}
-//		if($('#startDate').html()=='起始时间'){
-//			$('#hintBox').html('请填写起始时间！').show();
-//			setTimeout(function(){
-//				$('#hintBox').hide();
-//			},700)
-//		}else if($('#endDate').html()=='结束时间'){
-//			$('#hintBox').html('请填写结束时间！').show();
-//			setTimeout(function(){
-//				$('#hintBox').hide();
-//			},700)
-//		}else{
 			var t=new Date().getTime();
 			$.ajax({
 				type:'POST',
@@ -126,6 +115,5 @@
 					}
 				},
 			})
-//		}
 	})
 })()

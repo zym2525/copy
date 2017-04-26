@@ -66,7 +66,6 @@
 		    return oLi;
 		}
 		for(var i=0;i<data['feesList'].length;i++){
-			//运费
 			if(data['feesList'][i]['feeTypeNum']=='0'){
 				$('#unit').html(arrHyfCurrency[data['feesList'][i]['currency']]).attr({'currency':data['feesList'][i]['currency'],'feeCode':data['feesList'][i]['feeCode']});
 				$('.units').html(arrCurrency[data['feesList'][i]['currency']]);
@@ -79,7 +78,6 @@
 				}
 				$('#hyf li:last-child').addClass('cr')
 			}else{
-				//附加费
 				var oDd=document.createElement('dd');
 				oDd.className='clearfix';
 		    	if(data['feesList'][i]['byOrder']=='1'){

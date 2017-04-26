@@ -1,110 +1,107 @@
-//询盘
-function getEnquirys(token,enquiryState,currentPage,fn,isBackward){
-//	isBackward=isBackward||1;
-	var t=new Date().getTime();
+function getEnquirys(a, b, c, d, e) {
+	var t = new Date().getTime();
 	$.ajax({
-		type:'POST',
-		async:false,
-		url:'http://106.14.251.28:8085/bizCenter/enquiryService/getEnquirys',
-		data:{
-			'accessToken':token,
-			'enquiryStatus':enquiryState,
-			'msgId':t+'',
-			'isBackward':isBackward,
-			'schemeStatus':'',
-			'enquiryTimeStart':'2010-03-10',
-			'enquiryTimeEnd':'2047-03-10',
-			'pageSize':pageSize,
-			'currentPage':currentPage,
+		type: "POST",
+		async: false,
+		url: "http://106.14.251.28:8085/bizCenter/enquiryService/getEnquirys",
+		data: {
+			"accessToken": a,
+			"enquiryStatus": b,
+			"msgId": t + "",
+			"isBackward": e,
+			"schemeStatus": "",
+			"enquiryTimeStart": "2010-03-10",
+			"enquiryTimeEnd": "2047-03-10",
+			"pageSize": pageSize,
+			"currentPage": c,
 		},
-		success:function(json){
-			console.log(json)
-			if(json.retCode==0000){
-				var allEnquirys=eval(json.enquirys)
-				fn&&fn(allEnquirys,json.num);
+		success: function(json) {
+			console.log(json);
+			if(json.retCode == 0) {
+				var allEnquirys = eval(json.enquirys);
+				d && d(allEnquirys, json.num)
 			}
 		},
 	})
-}
-//拿船公司
-function getCarrys(fn){
-	var t=new Date().getTime();
-	$.ajax({
-		type:'POST',
-		async:false,
-		url:'http://106.14.251.28:8085/bizCenter/carryService/getCarrys',
-		data:{
-			'accessToken':getCookie('accessToken'),
-			'msgId':t+'',
-		},
-		success:function(json){
-			if(json.retCode==0000){
-				var arrCarrys=eval(json.carrys);
-				fn&&fn(arrCarrys)
-			}
-		},
-	})
-}
-//全程跟踪
-function findByOrder(currentPage,status,fn){
-	var t=new Date().getTime();
-	$.ajax({
-		type:"post",
-		url:"http://106.14.251.28:8085/bizCenter/order/findByOrder?accessToken="+getCookie('accessToken'),
-		async:true,
-		data:JSON.stringify({
-			"orderCode": "",
-		    "bookingNo": "",
-		    "createTimeBegin": "",
-		    "createTimeEnd": "",
-		    "currentPage": currentPage,
-		    "pageSize": orderPageSize,
-		    'status':'status',
-		}),
-		contentType: "application/json; charset=utf-8",
-		success:function(json){
-			if(json.code==0000){
-				console.log(json.data)
-				fn&&fn(json.data);
-			}
-		},
-	});
 }
 
-//客户公司
-function getSupplierCompanys(fn){
-	var t=new Date().getTime();
+function getCarrys(c) {
+	var t = new Date().getTime();
 	$.ajax({
-		type:"post",
-		url:"http://106.14.251.28:8081/userCenter/companyService/getSupplierCompanys",
-		async:true,
-		data:{
-			'accessToken':getCookie('accessToken'),
-			'msgId':t+'',
+		type: "POST",
+		async: false,
+		url: "http://106.14.251.28:8085/bizCenter/carryService/getCarrys",
+		data: {
+			"accessToken": getCookie("accessToken"),
+			"msgId": t + "",
 		},
-		success:function(json){
-			if(json.retCode==0000){
-				fn&&fn(json.companys);
+		success: function(json) {
+			if(json.retCode == 0) {
+				var arrCarrys = eval(json.carrys);
+				c && c(arrCarrys)
 			}
 		},
-	});
+	})
 }
-//客户公司电话
-function getCompanyInfo(companyCode,fn){
-	var t=new Date().getTime();
+
+function findByOrder(g, f, h) {
+	var e = new Date().getTime();
 	$.ajax({
-		type:"post",
-		url:"http://106.14.251.28:8081/userCenter/companyService/getCompanyInfo",
-		async:true,
-		data:{
-			'accessToken':getCookie('accessToken'),
-			'msgId':t+'',
-			'companyCode':companyCode,
-		},
-		success:function(json){
-			if(json.retCode==0000){
-				fn&&fn(json['mobileNo']);
+		type: "post",
+		url: "http://106.14.251.28:8085/bizCenter/order/findByOrder?accessToken=" + getCookie("accessToken"),
+		async: true,
+		data: JSON.stringify({
+			"orderCode": "",
+			"bookingNo": "",
+			"createTimeBegin": "",
+			"createTimeEnd": "",
+			"currentPage": g,
+			"pageSize": orderPageSize,
+			"status": "status",
+		}),
+		contentType: "application/json; charset=utf-8",
+		success: function(a) {
+			if(a.code == 0) {
+				console.log(a.data);
+				h && h(a.data)
 			}
 		},
-	});
+	})
 }
+
+function getSupplierCompanys(c) {
+	var d = new Date().getTime();
+	$.ajax({
+		type: "post",
+		url: "http://106.14.251.28:8081/userCenter/companyService/getSupplierCompanys",
+		async: true,
+		data: {
+			"accessToken": getCookie("accessToken"),
+			"msgId": d + "",
+		},
+		success: function(a) {
+			if(a.retCode == 0) {
+				c && c(a.companys)
+			}
+		},
+	})
+}
+
+function getCompanyInfo(f, d) {
+	var e = new Date().getTime();
+	$.ajax({
+		type: "post",
+		url: "http://106.14.251.28:8081/userCenter/companyService/getCompanyInfo",
+		async: true,
+		data: {
+			"accessToken": getCookie("accessToken"),
+			"msgId": e + "",
+			"companyCode": f,
+		},
+		success: function(a) {
+			if(a.retCode == 0) {
+				d && d(a["mobileNo"])
+			}
+		},
+	})
+};

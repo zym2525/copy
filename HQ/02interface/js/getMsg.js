@@ -65,7 +65,6 @@ $(function(){
 //		})
 		
 		
-		//懒加载
 		$('.enterances2').on('scroll',function(){
 //			console.log($('.enterances2').height()+$('.enterances2').scrollTop())
 			if(($(this)[0].scrollHeight-100)<=($(this).height()+$(this).scrollTop())){
@@ -149,7 +148,6 @@ $(function(){
 			findByOrder(orderNum,'0,1',setNewNodes);
 			findByOrder(orderNum2,2,setNewNodes2);
 		})
-		//加载询盘
 		function loadEnquirys(){
 			if(bSinEnquirys) return;
 			bSinEnquirys=true;
@@ -204,7 +202,6 @@ $(function(){
 				
 			}
 		}
-		//加载物流
 		function loadNodes(){
 			if(bSinlogistics) return;
 			bSinlogistics=true;
@@ -244,12 +241,10 @@ $(function(){
 				}
 			}
 		}
-		//加载询价
 		
 			
 			
 		
-		//取消询盘
 		function cancel(){
 			arrInquirys1.forEach(function(ele,index){
 				ele.querySelectorAll('.cancel')[0].addEventListener('touchstart',function(ev){
@@ -333,14 +328,11 @@ function setEnquirys2(data,iNum){
 	putEnquirys(arrEnquirys3,oContent);
 	$('.nav1 li:last-child .n').html(sessionStorage.getItem('lengths3'));
 }
-//询盘
 function templateEnquirys0(id,json,index){
 	var oTmp=document.getElementById(id);
     var oSection=oTmp.cloneNode(true);
     var oNum=oSection.getElementsByClassName('num')[0];
     oSection.removeAttribute('id');
-//  oSection.setAttribute('enquiryCode',json['enquiryCode']);
-    //查运价方案
     if(json['status']==1||json['status']==2){
     	$(oSection).find('.btn').hide();
     	$(oSection).css('paddingBottom',0);
@@ -450,7 +442,6 @@ function templateEnquirys0(id,json,index){
    }
     return oSection;
 }
-//订单
 function templateNodes(id,json){
 	var oTmp=document.getElementById(id);
 	var oDiv=oTmp.cloneNode(true);
@@ -498,14 +489,12 @@ function setNewNodes2(data){
 		$('.nav3 li:last-child .nm').html(`(${data[0]['num']})`);
 	}
 }
-//询价管理
 function templateEnquirys1(id,json){
 	var oTmp=document.getElementById(id);
     var oSection=oTmp.cloneNode(true);
     var oNum=oSection.getElementsByClassName('num')[0];
     oSection.removeAttribute('id');
     oSection.setAttribute('enquiryCode',json['enquiryCode']);
-    //查运价方案
     if(json['schemeStatus']<=2){
     	 oSection.className='container bReady';
     	 $(oSection).find('.bCompete').css('backgroundImage',"url(../img/yibaojia"+json['schemeCount']+".png)")

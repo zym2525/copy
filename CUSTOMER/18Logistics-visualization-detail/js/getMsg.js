@@ -39,9 +39,6 @@ function setNodesByOrder(json){
     	var data=[];
     }
 	
-	for(var key in json['visibleNodes']){
-//		var oLi=$('<li></li>');
-	}
 	for(var i=0;i<data.length;i++){
 		var oEm=$('dl[nodeCode='+data[i]['nodeCode']+']').children().children('em');
 		oEm.removeClass('gray');

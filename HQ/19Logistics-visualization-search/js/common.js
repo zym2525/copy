@@ -15,7 +15,6 @@ $(function(){
 			}
 		}
 	})
-	//模糊查客户
 	$('#text2 input,#text2 .s1').on('touchstart',function(){
 		var Select = new IosSelect(1, 
 		    [data[1]],
@@ -72,9 +71,7 @@ $(function(){
 						}
 						setTimeout(function(){
 							$('#hintBox').hide();
-//							if(json.data){
 								sessionStorage.setItem('dataNodes',JSON.stringify(json.data));
-//							}
 							sessionStorage.removeItem('currentData3')
 							sessionStorage.removeItem('currentScrollT3')
 							window.history.back();

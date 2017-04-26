@@ -121,7 +121,6 @@
 	    		$('#tDay').show();
 	    	}
 	    })
-	    //发布
 	    $('#btn').on('touchstart',function(){
 			$('#shadow').show();
 		})
@@ -456,7 +455,6 @@
 //		})
 //	}
 	
-	//查供应商
 	isClick($('.companyBox input,.companyBox .s1'),function(){
 		var Select = new IosSelect(1, 
 		    [arrSupplierCompanys],
@@ -560,7 +558,6 @@
 			$('#allCostTotal')[0].innerHTML+='<b></b><em>$</em><span class="val tol3">'+total3+'</span>';
 		}
 	}
-	//fees
 	function toTotalFeesAll(){
 		$('#allQuoteTotal')[0].innerHTML='';
 		var total1=0;
@@ -666,7 +663,6 @@
 		}
 	}
 	
-	//费用arr
 	function createPrimeFees(feesObj,json){
 		var arr=[
 			{

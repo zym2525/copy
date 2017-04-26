@@ -129,47 +129,6 @@
 	$('.arrow').on('touchstart',function(){
 		window.history.back();
 	})
-	//模糊查客户
-//	var timer=null;
-//	$('.fuzzy input').on('keyup',function(){
-//		if($('.fuzzy input').val()!=''){
-//			clearTimeout(timer);
-//			timer=setTimeout(function(){
-//				fzCustomCompany($('.fuzzy input').val(),function(companys){
-//					$('.fuzzy .view').empty();
-//					if(companys){
-//						for(var i=0;i<companys.length;i++){
-//							var oLi=$('<li class="item"><span></span></li>');
-//							oLi.find('span').text(companys[i]['companyName']).attr('companyCode',companys[i]['companyCode']);
-//							$('.fuzzy .view').append(oLi);
-//						}
-//					}
-//					$('.fuzzy .view span').on('touchstart',function(){
-//						$('#text2 .s1').hide();
-//						$('#text2 input').val($(this).text()).attr('companyCode',$(this).attr('companyCode'));
-//						$('.fuzzy').css('display','none');
-//						$('.fuzzy input').val('');
-//						$('.fuzzy .view').empty();
-//						return false;
-//					});
-//				})
-//			},500);
-//		}
-//		
-//	});
-//	$('.fuzzy .cancel').on('touchstart',function(){
-//		$('.fuzzy').css('display','none');
-//		$('.fuzzy input').val('');
-//		$('.fuzzy .view').empty();
-//		if(!$('#text2 input').val()){
-//			$('#text2 .s1').show();
-//		}
-//	})
-//	$('#text2 input').on('focus',function(){
-//		$('.fuzzy').css('display','flex');
-//		$('.fuzzy .view').scrollTop(0);
-//		$('.fuzzy input')[0].focus();
-//	})
 	$('#text2 input,#text2 .s1').on('touchstart',function(){
 		var Select = new IosSelect(1, 
 		    [data2[2]],

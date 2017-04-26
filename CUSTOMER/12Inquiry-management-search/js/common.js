@@ -9,22 +9,12 @@
 	$('.btn').click(function(){
 		$('.btn').removeClass('active');
 		$(this).addClass('active');
-//		if($(this).hasClass('active')){
-//			var s=$(this).children('span').attr('localeString');
-//			$(this).children('span').attr('localeString',s+'_1');
-//			setLng();
-//		}else{
-//			var s=$(this).children('span').attr('localeString');
-//			$(this).children('span').attr('localeString',s.substring(0,s.length-2));
-//			setLng();
-//		}
 	});
 	$('#podBox').on('touchstart',function(){
 		setCookie('local',window.location.href,28);
 		open("../04POT/04-1.html");
 	})
 	$('#arrow').on('touchstart',function(){
-//		window.history.back();
 		open('../02interface/interface.html');
 	})
 	$('#search').on('touchstart',function(){
@@ -34,17 +24,6 @@
 		if($('#endDate').html()!='结束时间'&&$('#endDate').html()!='End Time'){
 			endDate=$('#endDate').html();
 		}
-//		if($('#startDate').html()=='起始时间'){
-//			$('#hintBox').html('请填写起始时间！').show();
-//			setTimeout(function(){
-//				$('#hintBox').hide();
-//			},700)
-//		}else if($('#endDate').html()=='结束时间'){
-//			$('#hintBox').html('请填写结束时间！').show();
-//			setTimeout(function(){
-//				$('#hintBox').hide();
-//			},700)
-//		}else{
 			var t=new Date().getTime();
 			switch (getCookie('nav1Count')){
 				case '0':
@@ -101,6 +80,5 @@
 					}
 				},
 			})
-//		}
 	})
 })()

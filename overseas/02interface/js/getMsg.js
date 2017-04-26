@@ -1,5 +1,4 @@
 $(function(){
-//	$('#btnEnquirys').on('touchstart',function(){
 		var port=getCookie('port')||'DUBAI';
 		$('#pod').html(port);
 		$('#pod').attr('code',getCookie('code')||'AEDUB');
@@ -28,7 +27,6 @@ $(function(){
 			setCookie('nav2Count',0,28);
 			loadNodes()
 		});
-//		$('.enterances2 .enquiry').each(function(index,ele){
 			$('.enterances2').on('scroll',function(){
 				switch (getCookie('nav1Count')){
 					case '0':
@@ -44,8 +42,6 @@ $(function(){
 				}
 				sessionStorage.setItem('currentScrollT',JSON.stringify(currentScrollT));
 			})
-//		})
-//		$('.enterances3 .content').each(function(index,ele){
 			$('.enterances3').on('scroll',function(){
 				switch (getCookie('nav2Count')){
 					case '0':
@@ -58,10 +54,6 @@ $(function(){
 				sessionStorage.setItem('currentScrollT2',JSON.stringify(currentScrollT2));
 			})
 			
-//		})
-		
-		
-		//懒加载
 		$('.enterances2').on('scroll',function(){
 			if(($(this)[0].scrollHeight-100)<=($(this).height()+$(this).scrollTop())){
 				switch (getCookie('nav1Count')){
@@ -140,7 +132,6 @@ $(function(){
 			findHistoryOrder(orderNum2,setNewNodes2)
 		})
 		
-		//加载询盘
 		function loadEnquirys(){
 			if(bSinEnquirys) return;
 			bSinEnquirys=true;
@@ -195,7 +186,6 @@ $(function(){
 				
 			}
 		}
-		//加载物流
 		function loadNodes(){
 			if(bSinlogistics) return;
 			bSinlogistics=true;
@@ -238,11 +228,8 @@ $(function(){
 			}
 		}
 		
-		//取消询盘和询价
 		function cancel(){
 			arrEnquirys2.forEach(function(ele,index){
-//				ele.querySelectorAll('.cancel')[0].removeEventListener('touchstart',cancelEnquirys,false)
-//				ele.querySelectorAll('.cancel')[0].addEventListener('touchstart',cancelEnquirys,false)
 				ele.querySelectorAll('.cancel')[0].onclick=cancelEnquirys
 				function cancelEnquirys(ev){
 					if(getCookie('lng')=='CN'){
@@ -272,7 +259,6 @@ $(function(){
 									arrEnquirys3.unshift(ele);
 									$('#shadow1').hide();
 									$('#text3').html('');
-//									putEnquirys(arrEnquirys2,document.getElementById('enquiry2'));
 									$(ele).remove();
 									$('#enquiry3').scrollTop(0);
 									if(($('#enquiry2')[0].scrollHeight)<=($('#enquiry2').height()+$('#enquiry2').scrollTop())){
@@ -298,22 +284,8 @@ $(function(){
 					ev.cancelable=true;
 				}
 			});
-//			arrEnquirys1.forEach(function(ele,index){
-//				ele.querySelectorAll('.Inquiry')[0].addEventListener('touchstart',function(ev){
-//					$('#text3').html('确认询价吗')
-//					$('#shadow1').show();
-//					$('#cancel2').on('touchstart',function(){
-//						$('#shadow1').hide();
-//					});
-//					$('#confirm2').on('touchstart',function(){
-//						open('../enquiry/enquiry.html');
-//					});
-//					ev.cancelable=true;
-//				},false)
-//			});
 		}
 		
-//	});
 })
 function setEnquirys0(data,iNum){
 	if(iNum) sessionStorage.setItem('lengths1',iNum);
@@ -334,7 +306,6 @@ function putEnquirys(arr,oParent){
 	}
 }
 function setEnquirys1(data,iNum){
-//	arrEnquirys2=[];
 	if(iNum) sessionStorage.setItem('lengths2',iNum);
 	var oContent=document.getElementById('enquiry2');
 	for(var i=0;i<data.length;i++){
@@ -346,7 +317,6 @@ function setEnquirys1(data,iNum){
 	$('.nav1 li:nth-child(2) .n').html(sessionStorage.getItem('lengths2'));
 }
 function setEnquirys2(data,iNum){
-//	arrEnquirys3=[];
 	if(iNum) sessionStorage.setItem('lengths3',iNum);
 	var oContent=document.getElementById('enquiry3');
 	for(var i=0;i<data.length;i++){
@@ -358,15 +328,12 @@ function setEnquirys2(data,iNum){
 	$('#enquiry3 .cancel').hide();
 	$('.nav1 li:last-child .n').html(sessionStorage.getItem('lengths3'));
 }
-//询盘
 function templateEnquirys0(id,json){
 	var oTmp=document.getElementById(id);
     var oSection=oTmp.cloneNode(true);
     var oNum=oSection.getElementsByClassName('num')[0];
     oSection.removeAttribute('id');
     oSection.setAttribute('enquiryCode',json['enquiryCode']);
-    //查运价方案
-    //询价状态
     switch(json['status']){
     	case 0:
     		oSection.className='container bReady';
@@ -408,7 +375,6 @@ function templateEnquirys0(id,json){
 		    	if(json['enquirybizStatus']=='1'){
 		    		oSection.getElementsByClassName('cancelBtn')[0].style.display='block';
 		    	}
-//				 oSection.className='container';
 		    }
     		break;
     	case 2:

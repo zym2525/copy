@@ -27,7 +27,6 @@ function show(ele){
 }
 //登录
 (function(){
-//	hint();
 	if(!getCookie('lng')){
 		setCookie('lng','CN',28);
 	}
@@ -60,11 +59,7 @@ function show(ele){
 				$('#hint').text('LOADING!');
 			}
 			$('#hint').show().css('margin-left',-Number($('#hint').width())/2);
-//			alert('正在登录!')
 			var t=new Date().getTime();
-//			var p=oPassword.val();
-//			hex_md5(p).substring(8,24);
-//			AndroidWebView.showInfoFromJs()
 			setTimeout(function(){
 				$.ajax({
 				type:'POST',
@@ -129,7 +124,6 @@ function show(ele){
 		},700);
 	}
 	$('#forget').on('touchstart',function(){
-//		open("../36forgetPassword/36.html");
 		return false;
 	})
 })();

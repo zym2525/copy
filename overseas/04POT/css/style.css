@@ -70,10 +70,10 @@ header h2{
 	position: absolute;
 	font-size: 0.2rem;
 	line-height: 0.58rem;
-	font-size: 0.32rem;
 	left: 0.68rem;
 	top: 50%;
 	margin-top: -0.29rem;
+	font-size: 0.32rem;
 }
 .search img{
 	position: absolute;

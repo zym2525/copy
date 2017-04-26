@@ -1,14 +1,15 @@
-//后退
+
 $('.comeback').on('touchstart',function(){
 	open(getCookie('local'));
 	removeCookie('local');
 })
 
 $(function(){
-	//设置全部港口
-//	var num=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+	
+	
+
 	(function(){
-		var str='';
+
 		var allPorts=eval(sessionStorage.getItem('ports'));
 		var allPortsSort={'A':[],'B':[],'C':[],'D':[],'E':[],'F':[],
 			'G':[],'H':[],'I':[],'J':[],'K':[],'L':[],'M':[],'N':[],
@@ -27,7 +28,7 @@ $(function(){
 				oEnterances2.appendChild(oDl);
 				for(var i=0;i<allPortsSort[key].length;i++){
 					var oDd=document.createElement('dd');
-					str+=allPortsSort[key][i]['portName'].replace(/\s+/g,'')+'|';
+
 					allPortsSort[key][i]['portCName']=allPortsSort[key][i]['portCname'].replace(/^\s+|\s+$/g,'');
 					oDd.innerHTML=`<span id=${allPortsSort[key][i]['portCode'].replace(/\s+/g,'')} code=${allPortsSort[key][i]['portCode']}>${allPortsSort[key][i]['portName']} (${allPortsSort[key][i]['portCName']})</span>`;
 					oDl.appendChild(oDd);
@@ -43,9 +44,18 @@ $(function(){
 		    		open(getCookie('local'));
 				})
 			})
+
+
+
+
+
+
+
+
+
+
 		},300)
 		
-		//设置热门港口
 		var hotPortsSort={};
 		getHotPorts(getCookie('accessToken'),function(data){
 			for(var i=0;i<data.length;i++){
@@ -70,16 +80,21 @@ $(function(){
 				}
 				oLi.html(`${hotPortsSort[key][i]['portName']}(${hotPortsSort[key][i]['portCname'].replace(/^\s+|\s+$/g,'')})`);
 				oLi.attr('code',hotPortsSort[key][i]['portCode']);
-				oLi.on('touchstart',function(){
-					oLi.timer=setTimeout(()=>{
-			    		setCookie('port',$(this).text().split('(')[0]);
-			    		setCookie('code',$(this).attr('code'));
-			    		open(getCookie('local'));
-			    	},700);
-			    	$(this).on('touchmove',function(){
-			    		clearTimeout(oLi.timer);
-			    	})
-				});
+				isClick(oLi,function(ele){
+					setCookie('port',ele.text().split('(')[0]);
+		    		setCookie('code',ele.attr('code'));
+		    		open(getCookie('local'));
+				})
+
+
+
+
+
+
+
+
+
+
 				oUl.append(oLi);
 			}
 			$('#hotContent').append(oUl);
@@ -94,7 +109,10 @@ $(function(){
 			$(this).addClass('active');
 			aContent2.eq($(this).index()).show();
 		})
-		//搜索
+		
+		
+		
+		
 		var timer=null;
 		$('#text input').on('keyup',function(){
 			clearTimeout(timer);

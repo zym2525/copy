@@ -228,7 +228,6 @@
 		}
 	    
 	    
-	    //发布
 	    $('#btn').on('touchstart',function(){
 			$('#shadow').show();
 		})
@@ -253,11 +252,9 @@
 					$('#hintBox').hide();
 				},700)
 			}else{
-				//采纳方案
 				var t=new Date().getTime();
 				var arrPrimeFees=createPrimeFees($('.PrimeFees'),{'Cost20gp':$('#cost20gp'),'Cost40gp':$('#cost40gp'),'Cost40hq':$('#cost40hq'),'Cost45hc':$('#cost45hc'),});
 				var arrFees=createPrimeFees($('.Fees'),{'Cost20gp':$('#cost20gp2'),'Cost40gp':$('#cost40gp2'),'Cost40hq':$('#cost40hq2'),'Cost45hc':$('#cost45hc2'),});
-						//修改费用
 				$.ajax({
 					type:'POST',
 					async:false,
@@ -301,7 +298,6 @@
 			
 		})
 	}
-	//修改费用
 	$('.comb').on('touchstart',function(){
 		$('.updateFee').hide();
 		$('.addfees').hide();
@@ -469,7 +465,6 @@
 			$('#allCostTotal')[0].innerHTML+='<b></b><em>$</em><span class="val tol3">'+total3+'</span>';
 		}
 	}
-	//fees
 	function toTotalFeesAll(){
 		$('#allQuoteTotal')[0].innerHTML='';
 		var total1=0;
@@ -575,7 +570,6 @@
 		}
 	}
 	
-	//费用arr
 	function createPrimeFees(feesObj,json){
 		var arr=[
 			{

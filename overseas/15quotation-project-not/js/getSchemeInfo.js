@@ -12,10 +12,6 @@ function getSchemeInfo(fn){
 		},
 		success:function(json){
 			if(json.retCode==0000){
-//				alert('拿到运价方案')
-//				var oSchemes=eval('('+json.schemes+')');
-//				localStorage.setItem('oSchemes',json.schemes);
-				console.log(json)
 				fn&&fn(json.schemes);
 			}else{
 				alert('没拿到')
@@ -39,7 +35,6 @@ function updateFees(fees,fn){
 		},
 		success:function(json){
 			if(json.retCode==0000){
-				console.log(json)
 				fn&&fn();
 			}
 		},

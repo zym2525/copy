@@ -11,12 +11,6 @@ $(function(){
 		if($('#endDate').html()!='结束时间'&&$('#endDate').html()!='End Time'){
 			endDate=$('#endDate').html();
 		}
-//		if($('#orderCode').val()==''&&$('#mbl').val()==''){
-//			$('#hintBox').html('请填写订单号或提单号！').show();
-//			setTimeout(function(){
-//				$('#hintBox').hide();
-//			},700)
-//		}else{
 		if(getCookie('nav2Count')=='0'){
 			var t=new Date().getTime();
 			$.ajax({
@@ -103,8 +97,6 @@ $(function(){
 				},
 			})
 		}
-			
-//		}
 		return false;
 	})
 })
