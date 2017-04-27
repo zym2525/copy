@@ -48,6 +48,7 @@ var langText={
 		'cancel':'Cancel',
 		'confirm':'Confirm',
 		'confirm2':'Confirm the quotation?',
+		'prepaid':'Prepaid',
 	},
 	'CN':{
 		'title':'直接报价',
@@ -97,6 +98,7 @@ var langText={
 		'cancel':'取消',
 		'confirm2':'确认报价吗？',
 		'confirm':'确定',
+		'prepaid':'预付',
 	}
 }
 var f1='取消';

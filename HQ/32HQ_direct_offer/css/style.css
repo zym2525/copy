@@ -60,7 +60,10 @@ body{
 	/*margin-top: -0.15rem;*/
 	margin: 0.25rem 0.2rem 0;
 }
-.addfees dl dd.active i{
+.addfees dl dd.active .i1{
+	background: #1EB389;
+}
+.addfees dl dd .prepaid.active .i2{
 	background: #1EB389;
 }
 .addfees dl dd div{

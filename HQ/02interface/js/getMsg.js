@@ -242,8 +242,6 @@ $(function(){
 			}
 		}
 		
-			
-			
 		
 		function cancel(){
 			arrInquirys1.forEach(function(ele,index){
@@ -259,7 +257,6 @@ $(function(){
 							'enquiryCode':ele.getAttribute('enquiryCode'),
 						},
 						success:function(json){
-							console.log(json)
 							if(json.retCode==0000){
 								arrInquirys1.splice(index,1);
 								arrInquirys3.unshift(ele);
@@ -295,7 +292,7 @@ function setEnquirys0(data,iNum){
 		arrEnquirys1.push(oSection);
 	}
 	putEnquirys(arrEnquirys1,oContent);
-	$('.nav1 li:first-child .n').html(sessionStorage.getItem('lengths1'));
+	$('.nav1 li:first-child .n').html(sessionStorage.getItem('lengths1')||0);
 }
 
 function putEnquirys(arr,oParent){
@@ -314,7 +311,7 @@ function setEnquirys1(data,iNum){
 		arrEnquirys2.push(oSection);
 	}
 	putEnquirys(arrEnquirys2,oContent);
-	$('.nav1 li:nth-child(2) .n').html(sessionStorage.getItem('lengths2'));
+	$('.nav1 li:nth-child(2) .n').html(sessionStorage.getItem('lengths2')||0);
 }
 function setEnquirys2(data,iNum){
 //	arrEnquirys3=[];
@@ -326,7 +323,7 @@ function setEnquirys2(data,iNum){
 		arrEnquirys3.push(oSection);
 	}
 	putEnquirys(arrEnquirys3,oContent);
-	$('.nav1 li:last-child .n').html(sessionStorage.getItem('lengths3'));
+	$('.nav1 li:last-child .n').html(sessionStorage.getItem('lengths3')||0);
 }
 function templateEnquirys0(id,json,index){
 	var oTmp=document.getElementById(id);

@@ -40,7 +40,7 @@ function isClick(c, b) {
 	});
 	c.on("touchend", function(d) {
 		if(a) {
-			b && b(c)
+			b && b	(c,event)
 		}
 	})
 };

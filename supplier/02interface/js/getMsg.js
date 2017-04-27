@@ -36,7 +36,6 @@ $(function(){
 				}
 				sessionStorage.setItem('currentScrollT',JSON.stringify(currentScrollT));
 			})
-//		})
 		
 		$('.enterances2').on('scroll',function(){
 			if(($(this)[0].scrollHeight-60)<($(this).height()+$(this).scrollTop())){
@@ -57,7 +56,6 @@ $(function(){
 				}
 				$(this).scrollTop($(this).scrollTop()+10)
 			}
-//			return false;
 		})
 		$('.shuaxin1').on('touchstart',function(){
 			iNav1Num1=0;
@@ -79,7 +77,6 @@ $(function(){
 			getEnquirys(getCookie('accessToken'),0,iNav1Num2,setEnquirys1,1,3);
 		})
 
-		//加载询盘
 		function loadEnquirys(){
 			if(bSinEnquirys) return;
 			bSinEnquirys=true;
@@ -122,13 +119,11 @@ $(function(){
 				}else{
 					getEnquirys(getCookie('accessToken'),0,iNav1Num1,setEnquirys0,1,5);
 					getEnquirys(getCookie('accessToken'),0,iNav1Num2,setEnquirys1,1,3);
-//					getEnquirys(getCookie('accessToken'),2,setEnquirys2);
 				}
 				
 			}
 		}
 		
-		//取消询盘
 		function cancel(){
 			arrEnquirys1.forEach(function(ele,index){
 				ele.querySelectorAll('.cancel')[0].addEventListener('touchstart',function(ev){
@@ -171,7 +166,6 @@ $(function(){
 			});
 		}
 		
-//	});
 })
 function setEnquirys0(data,iNum){
 	var oContent1=document.getElementById('enquiry1');
@@ -182,7 +176,7 @@ function setEnquirys0(data,iNum){
 		arrEnquirys1.push(oSection);
 	}
 	putEnquirys(arrEnquirys1,oContent1);
-	$('.nav1 li:first-child .n').html(sessionStorage.getItem('lengths1'));
+	$('.nav1 li:first-child .n').html(sessionStorage.getItem('lengths1')||0);
 }
 function putEnquirys(arr,oParent){
 	oParent.innerHTML='';
@@ -191,7 +185,6 @@ function putEnquirys(arr,oParent){
 	}
 }
 function setEnquirys1(data,iNum){
-//	arrEnquirys2=[];
 	if(iNum) sessionStorage.setItem('lengths2',iNum);
 	var oContent=document.getElementById('enquiry2');
 	for(var i=0;i<data.length;i++){
@@ -200,10 +193,9 @@ function setEnquirys1(data,iNum){
 		arrEnquirys2.push(oSection);
 	}
 	putEnquirys(arrEnquirys2,oContent);
-	$('.nav1 li:nth-child(2) .n').html(sessionStorage.getItem('lengths2'));
+	$('.nav1 li:nth-child(2) .n').html(sessionStorage.getItem('lengths2')||0);
 }
 function setEnquirys2(data,iNum){
-//	arrEnquirys3=[];
 	if(iNum) sessionStorage.setItem('lengths3',iNum);
 	var oContent=document.getElementById('enquiry3');
 	for(var i=0;i<data.length;i++){
@@ -212,15 +204,13 @@ function setEnquirys2(data,iNum){
 		arrEnquirys3.push(oSection);
 	}
 	putEnquirys(arrEnquirys3,oContent);
-	$('.nav1 li:last-child .n').html(sessionStorage.getItem('lengths3'));
+	$('.nav1 li:last-child .n').html(sessionStorage.getItem('lengths3')||0);
 }
-//询盘
 function templateEnquirys0(id,json){
 	var oTmp=document.getElementById(id);
     var oSection=oTmp.cloneNode(true);
     var oNum=oSection.getElementsByClassName('num')[0];
     oSection.removeAttribute('id');
-    //查运价方案
     if(json['schemeStatus']=='5'){
     	oSection.className='container';
 		isClick($(oSection),function(){

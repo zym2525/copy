@@ -1,5 +1,7 @@
 $(function(){
 //	$('#btnEnquirys').on('touchstart',function(){
+	
+	
 		var port=getCookie('port')||'DUBAI';
 		$('#pod').html(port);
 		$('#pod').attr('code',getCookie('code')||'AEDUB');
@@ -303,7 +305,7 @@ function setEnquirys0(data,iNum){
 		arrEnquirys1.push(oSection);
 	}
 	putEnquirys(arrEnquirys1,oContent);
-	$('.nav1 li:first-child .n').html(sessionStorage.getItem('lengths1'));
+	$('.nav1 li:first-child .n').html(sessionStorage.getItem('lengths1')||0);
 }
 function putEnquirys(arr,oParent){
 	oParent.innerHTML='';
@@ -321,7 +323,7 @@ function setEnquirys1(data,iNum){
 		arrEnquirys2.push(oSection);
 	}
 	putEnquirys(arrEnquirys2,oContent);
-	$('.nav1 li:nth-child(2) .n').html(sessionStorage.getItem('lengths2'));
+	$('.nav1 li:nth-child(2) .n').html(sessionStorage.getItem('lengths2')||0);
 }
 function setEnquirys2(data,iNum){
 //	arrEnquirys3=[];
@@ -333,7 +335,7 @@ function setEnquirys2(data,iNum){
 		arrEnquirys3.push(oSection);
 	}
 	putEnquirys(arrEnquirys3,oContent);
-	$('.nav1 li:last-child .n').html(sessionStorage.getItem('lengths3'));
+	$('.nav1 li:last-child .n').html(sessionStorage.getItem('lengths3')||0);
 }
 function templateEnquirys0(id,json){
 	var oTmp=document.getElementById(id);

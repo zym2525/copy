@@ -296,7 +296,7 @@ function setEnquirys0(data,iNum){
 			arrEnquirys1.push(oSection);
 	}
 	putEnquirys(arrEnquirys1,oContent1);
-	$('.nav1 li:first-child .n').html(sessionStorage.getItem('lengths1'));
+	$('.nav1 li:first-child .n').html(sessionStorage.getItem('lengths1')||0);
 	setLng();
 }
 function putEnquirys(arr,oParent){
@@ -314,7 +314,7 @@ function setEnquirys1(data,iNum){
 		arrEnquirys2.push(oSection);
 	}
 	putEnquirys(arrEnquirys2,oContent);
-	$('.nav1 li:nth-child(2) .n').html(sessionStorage.getItem('lengths2'));
+	$('.nav1 li:nth-child(2) .n').html(sessionStorage.getItem('lengths2')||0);
 }
 function setEnquirys2(data,iNum){
 	if(iNum) sessionStorage.setItem('lengths3',iNum);
@@ -326,7 +326,7 @@ function setEnquirys2(data,iNum){
 	}
 	putEnquirys(arrEnquirys3,oContent);
 	$('#enquiry3 .cancel').hide();
-	$('.nav1 li:last-child .n').html(sessionStorage.getItem('lengths3'));
+	$('.nav1 li:last-child .n').html(sessionStorage.getItem('lengths3')||0);
 }
 function templateEnquirys0(id,json){
 	var oTmp=document.getElementById(id);

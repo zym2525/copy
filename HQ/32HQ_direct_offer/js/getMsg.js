@@ -169,6 +169,7 @@
 				var t=new Date().getTime();
 				var arrPrimeFees=createPrimeFees($('.PrimeFees'),{'Cost20gp':$('#cost20gp'),'Cost40gp':$('#cost40gp'),'Cost40hq':$('#cost40hq'),'Cost45hc':$('#cost45hc'),});
 				var arrFees=createPrimeFees($('.Fees'),{'Cost20gp':$('#cost20gp2'),'Cost40gp':$('#cost40gp2'),'Cost40hq':$('#cost40hq2'),'Cost45hc':$('#cost45hc2'),});
+				console.log(arrPrimeFees)
 				$.ajax({
 					type:'POST',
 					async:false,
@@ -234,7 +235,7 @@
 		bSin=true;
 		getFeeTypes(function(data){
 			for(var i=0;i<data.length;i++){
-				var oDd=$('<dd><i></i><div class="tl1 feeName"></div><div class="tl2 cost20gp"></div><div class="tl3 cost40gp"></div><div class="tl4 byOrder"></div><div class="tl5 cb currery"></div></dd>');
+				var oDd=$('<dd><i class="i1"></i><div class="tl1 feeName"></div><div class="tl2 cost20gp"></div><div class="tl3 cost40gp"></div><div class="tl4 byOrder"></div><div class="tl5 currery"></div><div class="tl4 cb prepaid active"><i style="margin:0.25rem auto 0" class="i2"></i></div></dd>');
 				oDd.find('.feeName').text(data[i]['feeTypeEname']);
 				oDd.attr('feeTypeNum',data[i]['feeTypeNum']);
 				oDd.attr('byOrder',data[i]['byOrder']);
@@ -251,6 +252,15 @@
 				}
 				isClick(oDd,function(oDd){
 					oDd.toggleClass('active')
+				})
+				isClick(oDd.find('.prepaid'),function(i,ev){
+					i.toggleClass('active')
+					if(i.hasClass('active')){
+						i.parent().attr('prepaid',1);
+					}else{
+						i.parent().attr('prepaid',0);
+					}
+					ev.cancelBubble=true;
 				})
 				$('.addfees .former').append(oDd);
 			}
@@ -280,6 +290,7 @@
 					oDd.find('input').css('background-color','#fff')
 					oDd.attr('currenys',$(this).attr('currency'));
 					oDd.attr('byOrder',$(this).attr('byOrder'));
+					oDd.attr('prepaid',$(this).attr('prepaid'));
 					oDd.attr('feeTypeNum',$(this).attr('feeTypeNum'));
 					if(!$('#append dd')['length']){
 						oDd.addClass('cb');
@@ -325,7 +336,6 @@
 		if(isclick){
 			$('#append dd').removeClass('active')
 			$(this).addClass('active');
-			console.log($(this).attr('byorder'))
 			if($(this).attr('byorder')=='1'){
 				$('#ipt5').val($(this).find('.currencys:first-child').text());
 				$('#ipt5').attr('currenys',$(this).attr('currenys'));
@@ -683,6 +693,7 @@
 				arr.push({
 					'feeTypeNum':$(ele).attr('feeTypeNum'),
 					'currency':$(ele).attr('currenys'),
+					'prepaid':$(ele).attr('prepaid'),
 					'byOrder':1,
 					'orderPrice':$(ele).find('input').val(),
 				});
@@ -690,6 +701,7 @@
 				arr.push({
 					'feeTypeNum':$(ele).attr('feeTypeNum'),
 					'currency':$(ele).attr('currenys'),
+					'prepaid':$(ele).attr('prepaid'),
 					'byOrder':0,
 					'Cost20gp':$(ele).find('.v1').val(),
 					'Cost40gp':$(ele).find('.v2').val(),
