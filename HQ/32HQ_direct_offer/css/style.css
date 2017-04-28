@@ -149,6 +149,12 @@ body{
 	margin-top: -0.12rem;
 	font-size: 0.32rem;
 }
+.updateFee .content .customer em{
+	position: absolute;
+	left:40%;
+	top: 0.06rem;
+	font-size: 0.32rem;
+}
 #tplLi{
 	display: none;
 }

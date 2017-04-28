@@ -319,6 +319,7 @@
 				$('#ipt5').attr('currenys',$(this).attr('currenys'));
 				$('#ipt5').siblings('span').hide()
 				$('.updateFee2 h2').text($(this).find('.name').text().split('(')[0])
+				$('.updateFee2 .e3').text(arrCurrency[$(this).attr('currenys')]+$(this).find('input').val());
 				$('.updateFee2').css('display','flex');
 			}else{
 				
@@ -326,6 +327,8 @@
 				$('#ipt3').attr('currenys',$(this).attr('currenys'));
 				$('#ipt3').siblings('span').hide()
 				$('.updateFee1 h2').text($(this).find('.name').text().split('(')[0])
+				$('.updateFee1 .e1').text(arrCurrency[$(this).attr('currenys')]+$(this).find('.v1').val());
+				$('.updateFee1 .e2').text(arrCurrency[$(this).attr('currenys')]+$(this).find('.v2').val())
 				$('.updateFee1').css('display','flex');
 			}
 			
