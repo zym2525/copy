@@ -22,6 +22,10 @@
 			})
 		}
 	})
+	
+	$('.btn-block').on('touchstart',function(){
+		$('.btn-block').toggleClass('active');
+	})
 	$('.arrow').on('touchstart',function(){
 		open('../02interface/interface.html');
 	})
@@ -36,11 +40,6 @@
 		$('.updateFee').hide();
 		$('.addfees').hide();
 	})
-//	$('#vesselName,#voyageName').on('touchstart',function(){
-//		$(this).siblings('.val').focus();
-//		return false;
-//	})
-	
 	//选择船公司
 	$('#carrys').on('touchstart',function(){
 		getCarrys(setCarrys);
@@ -85,6 +84,13 @@
 	}
 	
 	function setSchemeInfo(data){
+		getFeeTypesNearBy(data['polCode'],data['podCode'],function(data){
+			if(data['primeFees'].length){
+				for(var i=0;i<2;i++){
+					
+				}
+			}
+		})
 		var json=data;
 		for(var key in data['elements']){
 			if(key.charAt(0)=='n'&&data['elements'][key]!='0'){
@@ -94,9 +100,6 @@
 		}
 		$('#hyf li:last-child').addClass('cr')
 		$('#carrys').siblings('.val').attr('code',data['carryCode']||'0')
-//		$('#unit').html(arrHyfCurrency[data['feesList'][0]['currency']]);
-//		$('#num20GP').text('20GP*'+data['elements']['num20gp'])
-//		$('#num40GP').text('40GP*'+data['elements']['num40gp'])
 		$('.wrap').html($('.wrap').html().replace(/\{\{\w+\}\}/g,function(s){
 	        s = s.substring(2, s.length-2);
 	        if(data[s]){
@@ -240,6 +243,7 @@
 				oDd.attr('feeTypeNum',data[i]['feeTypeNum']);
 				oDd.attr('byOrder',data[i]['byOrder']);
 				oDd.attr('currency',data[i]['currency']);
+				oDd.attr('prepaid',1);
 				if(data[i]['byOrder']==1){
 					oDd.find('.byOrder').text('0');
 				}else{
@@ -319,8 +323,6 @@
 				toProfit();
 			})
 		}
-//		$('.addfees .former dd').removeClass('active')
-//		$('.addfees .former dd.active').addClass('old')
 		
 		$('.addfees').hide();
 		
@@ -407,66 +409,7 @@
 		toTotalFeesAll();
 		toProfit();
 	})
-	//船名航次
-//	var original1='';
-//	$('#voyage,#vessel').on('focus',function(){
-//		fzType=$(this).attr('id');
-//		$('.fuzzy').css('display','flex');
-//		$('.fuzzy .view').scrollTop(0);
-//		$('.fuzzy input')[0].focus();
-//		if($('.fuzzy input')[0].getAttribute('disabled')){
-//			$('.fuzzy input')[0].removeAttribute('disabled')
-//		}
-//		original1=$(this).val();
-//	})
-//	$('#voyage,#vessel').on('blur',function(){
-//		if(!$(this).val()) $(this).val(original1);
-//	})
-//	
-//	function searchVessel(){
-//		fsVessel($('.fuzzy input').val(),function(vessels){
-//			$('.fuzzy .view').empty();
-//			if(vessels[0]!=''){
-//				for(var i=0;i<vessels.length;i++){
-//					var oLi=$('<li class="item"><span></span></li>');
-//					oLi.find('span').text(vessels[i]['vessel']);
-//					oLi.find('span').attr('index',i);
-//					$('.fuzzy .view').append(oLi);
-//				}
-//			}
-//			$('.fuzzy .view span').on('touchstart',function(){
-//				$('#vessel').val($(this).text());
-//				$('#voyage').val(vessels[$(this).attr('index')]['voyage']);
-//				$('.fuzzy').css('display','none');
-//				$('.fuzzy input').val('');
-//				$('.fuzzy .view').empty();
-//				return false;
-//			});
-//		})
-//	}
-//	function searchVoyage(){
-//		fsVessel($('.fuzzy input').val(),function(voyage){
-//			console.log(voyage)
-//			$('.fuzzy .view').empty();
-//			if(voyage[0]!=''){
-//				for(var i=0;i<voyage.length;i++){
-//					var oLi=$('<li class="item"><span></span></li>');
-//					oLi.find('span').text(voyage[i]['voyage']);
-//					oLi.find('span').attr('index',i);
-//					$('.fuzzy .view').append(oLi);
-//				}
-//			}
-//			$('.fuzzy .view span').on('touchstart',function(){
-//				$('#voyage').val($(this).text());
-//				$('#vessel').val(voyage[$(this).attr('index')]['vessel']);
-//				$('.fuzzy').css('display','none');
-//				$('.fuzzy input').val('');
-//				$('.fuzzy .view').empty();
-//				return false;
-//			});
-//		})
-//	}
-	
+		
 	isClick($('.companyBox input,.companyBox .s1'),function(){
 		var Select = new IosSelect(1, 
 		    [arrSupplierCompanys],
@@ -680,9 +623,8 @@
 			{
 				'feeTypeNum':0,
 				'currency':$('#unit').attr('currency'),
+				'prepaid':($('.btn-block').hasClass('active')? 0:1),
 				'byOrder':0,
-//				'Cost20gp':$('#cost20gp').val(),
-//				'Cost40gp':$('#cost40gp').val(),
 			}
 		];
 		for(var key in json){

@@ -452,7 +452,7 @@ header h2{
 .freight dd ul{
 	display: flex;
 	margin-top: 0.3rem;
-	padding-left: 0.4rem;
+	padding-left: 0.9rem;
 }
 .freight dd ul li{
 	flex: 1;

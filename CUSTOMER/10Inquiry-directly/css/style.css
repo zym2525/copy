@@ -88,6 +88,7 @@ header h2{
 }
 .content ul .box .container .time{
 	display: flex;
+	padding-left: 3rem;
 }
 .content ul .box .container .time i{
 	display: block;

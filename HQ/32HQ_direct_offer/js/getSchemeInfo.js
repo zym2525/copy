@@ -127,7 +127,26 @@ function getCarrys(fn) {
 		},
 	})
 }
-
+function getFeeTypesNearBy(polCode,podCode,fn) {
+	var t = new Date().getTime();
+	$.ajax({
+		type: "POST",
+		async: false,
+		url: "http://106.14.251.28:8085/bizCenter/feeService/getFeeTypesNearBy",
+		data: {
+			"accessToken": getCookie("accessToken"),
+			"msgId": t + "",
+			"polCode": polCode,
+			"podCode": podCode,
+		},
+		success: function(json) {
+			console.log(json)
+			if(json.retCode == 0) {
+				fn && fn(json)
+			}
+		},
+	})
+}
 function fsVessel(str, fn) {
 	var t = new Date().getTime();
 	$.ajax({

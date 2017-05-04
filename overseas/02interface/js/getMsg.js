@@ -379,6 +379,7 @@ function templateEnquirys0(id,json){
     		break;
     	case 2:
     		oSection.className='container';
+    		$(oSection).find('.cancel').hide();
     		break;
     }
     

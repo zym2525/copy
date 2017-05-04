@@ -66,7 +66,7 @@ var langText={
 		'field6':'开船',
 		'field7':'截关',
 		'field8':'有效期',
-		'field15':'运费',
+		'field15':'海运费',
 		'field16':'附加费',
 		'field17':'订舱费',
 		'field18':'成本',

@@ -54,7 +54,7 @@ var langText={
 		'field22':'船期信息',
 		'field23':'(单位：美元)',
 		'cancel':'取消',
-		'complete':'完成',
+		'complete':'确认',
 	}
 }
 //币种

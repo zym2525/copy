@@ -63,7 +63,7 @@ var langText={
 		'Completed':'已完成',
 		'canceled':'已取消',
 		'cancel':'取消',
-		'complete':'完成',
+		'complete':'确定',
 		'Inquiry_time':'询价时间：',
 		'delivery_time':'预计出货时间：',
 		'remark':'备     注：',

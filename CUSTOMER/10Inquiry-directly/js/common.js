@@ -69,6 +69,7 @@
 								}
 								setTimeout(function() {
 									setCookie("currentCount", 1, 28);
+									setCookie("nav1Count", 0, 28);
 									sessionStorage.removeItem("str2");
 									$("#hintBox").hide();
 									sessionStorage.removeItem("currentData");
@@ -115,6 +116,7 @@
 								}
 								setTimeout(function() {
 									setCookie("currentCount", 1, 28);
+									setCookie("nav1Count", 0, 28);
 									sessionStorage.removeItem("currentData");
 									sessionStorage.removeItem("currentScrollT");
 									sessionStorage.removeItem("str2");
