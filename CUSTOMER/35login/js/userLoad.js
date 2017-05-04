@@ -82,7 +82,7 @@ function show(ele){
 						setCookie('refreshToken',json.refreshToken,28);
 						setCookie('accountType',json['accountType'],7);
 						setCookie('loginName',oUser.val(),30);
-						getPorts(json.accessToken);
+//						getPorts(json.accessToken);
 						$('#hint').html('');
 						$('#hint').hide();
 						oUser.val('');

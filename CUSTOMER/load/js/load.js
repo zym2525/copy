@@ -17,7 +17,7 @@ window.onload=function(){
 					setCookie('accessToken',json.accessToken,7);
 					setCookie('accessToken2',json.accessToken,28);
 					setCookie('refreshToken',json.refreshToken,28);
-					getPorts(getCookie('accessToken'));
+//					getPorts(getCookie('accessToken'));
 					getUserInfo(function(data){
 						setCookie('accountType',data.companyType,28);
 						switch(data['companyType']){
@@ -57,7 +57,7 @@ window.onload=function(){
 					setCookie('accessToken',json.accessToken,7);
 					setCookie('accessToken2',json.accessToken,28);
 					setCookie('refreshToken',json.refreshToken,28);
-					getPorts(getCookie('accessToken'));
+//					getPorts(getCookie('accessToken'));
 					getUserInfo(function(data){
 						setCookie('accountType',data.companyType,28);
 						switch(data['companyType']){
