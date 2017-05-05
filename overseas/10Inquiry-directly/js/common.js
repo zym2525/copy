@@ -42,14 +42,23 @@
 			var iYear=oDate.getFullYear();
 			var iMonth=oDate.getMonth()+1;
 			var iDay=oDate.getDate();
-			if(iYear<=Number(arr[0])){
-				if(iMonth<=Number(arr[1])){
-					if(iDay<=Number(arr[2])){
-						return true;
+			if(iYear<Number(arr[0])){
+				return true;
+			}else if(iYear>Number(arr[0])){
+				return false;
+			}else{
+				if(iMonth<Number(arr[1])){
+					return true;
+				}else if(iMonth>Number(arr[1])){
+					return false;
+				}else{
+					if(iDay>Number(arr[2])){
+						return false;
+					}else{
+						return true;	
 					}
 				}
 			}
-			return false;
 		}
 		if($('#Num20gp').val()==0&&$('#Num40gp').val()==0&&$('#Num40hq').val()==0&&$('#Num45hc').val()==0){
 			if(getCookie('lng')=='CN'){
