@@ -84,14 +84,15 @@
 	}
 	
 	function setSchemeInfo(data){
+		var arrP=['primeFees','fees'];
 		getFeeTypesNearBy(data['polCode'],data['podCode'],function(data){
 			if(data['primeFees'].length){
-				for(var i=data['primeFees'].length;i>0;i--){
+				for(var i=0;i<data['primeFees'].length;i++){
 					for(var j=0;j<2;j++){
-						if(data[j][i]['byOrder']=='1'){
-							var oDd=$("<dd class='clearfix'><span class='name fl'>"+data['primeFees'][i]['feeTypeEname']+"<span class='byOrder'> (byOrder)</span></span><span class='val fr'><span class='currencys'>"+arrCurrency[data[j][i]['currency']]+"</span><input type='number' value='0' disabled/></span></dd>");
+						if(data[arrP[j]][i]['byOrder']=='1'){
+							var oDd=$("<dd class='clearfix'><span class='name fl'>"+data['primeFees'][i]['feeTypeEname']+"<span class='byOrder'> (byOrder)</span></span><span class='val fr'><span class='currencys'>"+arrCurrency[data[arrP[j]][i]['currency']]+"</span><input type='number' value='0' disabled/></span></dd>");
 						}else{
-							var oDd=$("<dd class='clearfix'><span class='name fl'>"+data['primeFees'][i]['feeTypeEname']+"<span class='byOrder'> (nobyOrder)</span></span><span class='val fr'><span class='currencys'>"+arrCurrency[data[j][i]['currency']]+"</span><input type='number' value="+data[j][i]['cost20gp']+" class='v1' disabled/>*<span class='num1'>1</span>+<span class='currencys'>"+arrCurrency[data[j][i]['currency']]+"</span><input type='number' value="+data[j][i]['cost40gp']+" class='v2' disabled/>*<span class='num2'>1</span>=<span class='currencys2 currencys'>"+arrCurrency[data[j][i]['currency']]+"</span><span class='total2'>200</span></span></dd>");
+							var oDd=$("<dd class='clearfix'><span class='name fl'>"+data['primeFees'][i]['feeTypeEname']+"<span class='byOrder'> (nobyOrder)</span></span><span class='val fr'><span class='currencys'>"+arrCurrency[data[arrP[j]][i]['currency']]+"</span><input type='number' value="+data[arrP[j]][i]['cost20gp']+" class='v1' disabled/>*<span class='num1'>1</span>+<span class='currencys'>"+arrCurrency[data[arrP[j]][i]['currency']]+"</span><input type='number' value="+data[arrP[j]][i]['cost40gp']+" class='v2' disabled/>*<span class='num2'>1</span>=<span class='currencys2 currencys'>"+arrCurrency[data[arrP[j]][i]['currency']]+"</span><span class='total2'>200</span></span></dd>");
 							if($('#num20GP').length){
 								oDd.find('.num1').text($('#num20GP').text().substring(5));
 							}else{
@@ -105,10 +106,10 @@
 							toTotal(oDd);
 						}
 						oDd.find('input').css('background-color','#fff')
-						oDd.attr('currenys',data[j][i]['currency']);
-						oDd.attr('byOrder',data[j][i]['byOrder']);
-						oDd.attr('prepaid',data[j][i]['prepaid']);
-						oDd.attr('feeTypeNum',data[j][i]['feeTypeNum']);
+						oDd.attr('currenys',data[arrP[j]][i]['currency']);
+						oDd.attr('byOrder',data[arrP[j]][i]['byOrder']);
+						oDd.attr('prepaid',data[arrP[j]][i]['prepaid']);
+						oDd.attr('feeTypeNum',data[arrP[j]][i]['feeTypeNum']);
 						if(!$('#append dd')['length']){
 							oDd.addClass('cb');
 						}
@@ -140,7 +141,9 @@
 				$('#hyf').append($(oLi));
 			}
 		}
-		$('#hyf li:last-child').addClass('cr')
+		$('#hyf li:last-child').addClass('cr');
+		$('#unit').text(arrHyfCurrency[data['fee']['currency']])
+		$('#hyf').find('em').text(arrCurrency[data['fee']['currency']])
 		$('#carrys').siblings('.val').attr('code',data['carryCode']||'0')
 		$('.wrap').html($('.wrap').html().replace(/\{\{\w+\}\}/g,function(s){
 	        s = s.substring(2, s.length-2);
@@ -308,6 +311,13 @@
 					}
 					ev.cancelBubble=true;
 				})
+				if($('#append dd')){
+					$('#append dd').each(function(index,ele){
+						if($(ele).attr('feeTypeNum')==data[i]['feeTypeNum']){
+							oDd.addClass('active')
+						}
+					})
+				}
 				$('.addfees .former').append(oDd);
 			}
 		})

@@ -43,32 +43,32 @@ $('.time_selector').each(function(index,ele){
 		});
 	})
 })
-isClick($('.currencys'),function(){
-	if(getCookie('lng')=='CN'){
-		f1='取消';
-		f2='完成';
-	}else{
-		f1='Cancel';
-		f2='Complete';
-	}
-	var _this=this;
-	var Select = new IosSelect(1, 
-	    [currencys],
-	    {
-	        itemShowCount:9,		
-	        itemHeight: 0.7,
-	        headerHeight: 0.88,
-	        cssUnit: 'rem',
-	        callback: function (selectOneObj) {
-	        	$(_this).text(selectOneObj.value);
-	        	$(_this).siblings('.currencys').text(selectOneObj.value);
-	        	$(_this).parent().parent().attr('currenys',selectOneObj.id);
-	        	toTotalAll();
-	        	toTotalFeesAll();
-	        	toProfit();
-	        }
-	});
-})
+//isClick($('.currencys'),function(){
+//	if(getCookie('lng')=='CN'){
+//		f1='取消';
+//		f2='完成';
+//	}else{
+//		f1='Cancel';
+//		f2='Complete';
+//	}
+//	var _this=this;
+//	var Select = new IosSelect(1, 
+//	    [currencys],
+//	    {
+//	        itemShowCount:9,		
+//	        itemHeight: 0.7,
+//	        headerHeight: 0.88,
+//	        cssUnit: 'rem',
+//	        callback: function (selectOneObj) {
+//	        	$(_this).text(selectOneObj.value);
+//	        	$(_this).siblings('.currencys').text(selectOneObj.value);
+//	        	$(_this).parent().parent().attr('currenys',selectOneObj.id);
+//	        	toTotalAll();
+//	        	toTotalFeesAll();
+//	        	toProfit();
+//	        }
+//	});
+//})
 
 isClick($('#unit'),function(){
 	var Select = new IosSelect(1, 
