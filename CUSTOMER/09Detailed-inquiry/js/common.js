@@ -23,6 +23,21 @@
 		}
 	});
 	$('#btn').on('touchstart',function(){
+		function testDate(nowDate){
+			var arr=nowDate.split('-');
+			var oDate=new Date();
+			var iYear=oDate.getFullYear();
+			var iMonth=oDate.getMonth()+1;
+			var iDay=oDate.getDate();
+			if(iYear<=Number(arr[0])){
+				if(iMonth<=Number(arr[1])){
+					if(iDay<=Number(arr[2])){
+						return true;
+					}
+				}
+			}
+			return false;
+		}
 		if($('#20GPNum').val()==0&&$('#40GPNum').val()==0&&$('#40HQNum').val()==0&&$('#45HCNum').val()==0){
 			if(getCookie('lng')=='CN'){
 				$('#hintBox').html('请填写箱量！').show();
@@ -32,11 +47,11 @@
 			setTimeout(function(){
 				$('#hintBox').hide();
 			},700)
-		}else if($('#expectDate').html()=='2017-01-30'){
+		}else if(!testDate($("#expectDate").html())){
 			if(getCookie('lng')=='CN'){
-				$('#hintBox').html('请选择时间！').show();
+				$('#hintBox').html('日期错误！').show();
 			}else{
-				$('#hintBox').html('select time！').show();
+				$('#hintBox').html('Wrong Date！').show();
 			}
 			setTimeout(function(){
 				$('#hintBox').hide();

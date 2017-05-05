@@ -423,6 +423,9 @@ header h2{
 	top: 0;
 	font-size: 0.3rem;
 }
+.block dt b.btn-block2{
+	right: 1.6rem;
+}
 .block dt b.btn-block .yuan{
 	display: inline-block;
 	width: 0.3rem;

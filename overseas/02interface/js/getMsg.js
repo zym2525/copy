@@ -410,22 +410,10 @@ function templateEnquirys0(id,json){
         return json[s];
     });
     oSection.getElementsByClassName('Inquiry')[0].addEventListener('touchstart',function(ev){
-    	if(getCookie('lng')=='CN'){
-			$('#text3').html('确认询价吗')
-		}else{
-			$('#text3').html('Confirm the quotation?')
-		}
-		
-		$('#shadow1').show();
-		$('#cancel2').on('touchstart',function(){
-			$('#shadow1').hide();
-		});
-		$('#confirm2').on('touchstart',function(){
-			sessionStorage.setItem('currentData',JSON.stringify(currentData));
-			sessionStorage.setItem('currentScrollT',JSON.stringify(currentScrollT));
-			sessionStorage.setItem('enquiry',JSON.stringify(json));
-			open('../enquiry/enquiry.html');
-		});
+		sessionStorage.setItem('currentData',JSON.stringify(currentData));
+		sessionStorage.setItem('currentScrollT',JSON.stringify(currentScrollT));
+		sessionStorage.setItem('enquiry',JSON.stringify(json));
+		open('../enquiry/enquiry.html');
 		ev.cancelable=true;
 	},false);
     return oSection;

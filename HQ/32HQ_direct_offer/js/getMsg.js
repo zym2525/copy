@@ -24,7 +24,8 @@
 	})
 	
 	$('.btn-block').on('touchstart',function(){
-		$('.btn-block').toggleClass('active');
+		$('.btn-block').removeClass('active');
+		$(this).addClass('active');
 	})
 	$('.arrow').on('touchstart',function(){
 		open('../02interface/interface.html');
@@ -142,7 +143,7 @@
 			}
 		}
 		$('#hyf li:last-child').addClass('cr');
-		$('#unit').text(arrHyfCurrency[data['fee']['currency']])
+		$('#unit').text(arrHyfCurrency[data['fee']['currency']]).attr('currency',data['fee']['currency']);
 		$('#hyf').find('em').text(arrCurrency[data['fee']['currency']])
 		$('#carrys').siblings('.val').attr('code',data['carryCode']||'0')
 		$('.wrap').html($('.wrap').html().replace(/\{\{\w+\}\}/g,function(s){
@@ -177,6 +178,21 @@
 		});
 		$('#confirm').on('touchstart',function(){
 			$('#shadow').hide();
+			function testDate(nowDate){
+				var arr=nowDate.split('-');
+				var oDate=new Date();
+				var iYear=oDate.getFullYear();
+				var iMonth=oDate.getMonth()+1;
+				var iDay=oDate.getDate();
+				if(iYear<=Number(arr[0])){
+					if(iMonth<=Number(arr[1])){
+						if(iDay<=Number(arr[2])){
+							return true;
+						}
+					}
+				}
+				return false;
+			}
 			if($('.companyBox input').val()==''){
 				if(getCookie('lng')=='CN'){
 					$('#hintBox').html('请选择报价公司！').show();
@@ -200,6 +216,15 @@
 					$('#hintBox').html('请填写有效期！').show();
 				}else{
 					$('#hintBox').html('NO expireDate！').show();
+				}
+				setTimeout(function(){
+					$('#hintBox').hide();
+				},700)
+			}else if(testDate($('#expireDate').text())){
+				if(getCookie('lng')=='CN'){
+					$('#hintBox').html('有效期错误！').show();
+				}else{
+					$('#hintBox').html('Wrong expireDate！').show();
 				}
 				setTimeout(function(){
 					$('#hintBox').hide();
@@ -675,7 +700,7 @@
 			{
 				'feeTypeNum':0,
 				'currency':$('#unit').attr('currency'),
-				'prepaid':($('.btn-block').hasClass('active')? 0:1),
+				'prepaid':($('.btn-block1').hasClass('active')? 0:1),
 				'byOrder':0,
 			}
 		];

@@ -81,10 +81,9 @@ var yearData = function(callback) {
 var monthData = function (year, callback) {
         callback(formatMonth());
 };
-console.log(/^1$|3|5|7|8|10|12$/.test(11))
+
 var dateData = function (year, month, callback) {
         if (/^1$|3|5|7|8|10|12$/.test(month)) {
-        	console.log(1)
             callback(formatDate(31));
         }
         else if (/^4|6|9|11$/.test(month)) {

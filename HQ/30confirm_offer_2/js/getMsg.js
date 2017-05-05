@@ -1,5 +1,6 @@
 (function(){
 	var bOk=true;
+	var sta=0;
 	var port=getCookie('port')||'无';
 	$('#pot').html(port);
 	$('#pot').attr('code',getCookie('code')||'');
@@ -7,6 +8,7 @@
 	removeCookie('code');
 	getSchemeInfo(setSchemeInfo);
 	getEnquiryInfo(function(data){
+		sta=data['status'];
 		$('#customCompanyName').text(data['customCompanyName'])
 		$('#enquiryPart').text(data['enquiryPart'])
 		$('#enquiryAccount').text(data['enquiryAccount'])
@@ -282,58 +284,81 @@
 						}
 					},
 				})
-//						if(json.retCode==0000){
-//							$('#hintBox').html('发布方案成功！').show();
-//							setTimeout(function(){
-//								$('#hintBox').hide();
-//								open('../02interface/interface.html');
-//							},700)
-//						}else{
-//							$('#hintBox').html('发布方案失败！').show();
-//							setTimeout(function(){
-//								$('#hintBox').hide();
-//							},700)
-//						}
 			}
-			
 		})
+		
 	}
 	$('.comb').on('touchstart',function(){
 		$('.updateFee').hide();
 		$('.addfees').hide();
 	})
 	var isclick=false;
-	$(document).on('touchstart','#append .Fees',function(){
-		isclick=true;
-	})
-	$(document).on('touchmove','#append .Fees',function(){
-		isclick=false;
-	})
-	$(document).on('touchend','#append .Fees',function(){
-		if(!bOk) return;
-		if(isclick){
-			$('#append .Fees').removeClass('active')
-			$(this).addClass('active');
-			if($(this).attr('byorder')=='1'){
-				$('#ipt5').val($(this).find('.currencys:first-child').text());
-				$('#ipt5').attr('currenys',$(this).attr('currenys'));
-				$('#ipt5').siblings('span').hide()
-				$('.updateFee2 h2').text($(this).find('.name').text().split('(')[0])
-				$('.updateFee2 .e3').text(arrCurrency[$(this).attr('currenys')]+$(this).find('input').val());
-				$('.updateFee2').css('display','flex');
-			}else{
+	if(sta){
+		$(document).on('touchstart','#append .PrimeFees',function(){
+			isclick=true;
+		})
+		$(document).on('touchmove','#append .PrimeFees',function(){
+			isclick=false;
+		})
+		$(document).on('touchend','#append .PrimeFees',function(){
+			if(!bOk) return;
+			if(isclick){
+				$('#append .PrimeFees').removeClass('active')
+				$(this).addClass('active');
+				if($(this).attr('byorder')=='1'){
+					$('#ipt5').val($(this).find('.currencys:first-child').text());
+					$('#ipt5').attr('currenys',$(this).attr('currenys'));
+					$('#ipt5').siblings('span').hide()
+					$('.updateFee2 h2').text($(this).find('.name').text().split('(')[0])
+					$('.updateFee2 .e3').text(arrCurrency[$(this).attr('currenys')]+$(this).find('input').val());
+					$('.updateFee2').css('display','flex');
+				}else{
+					
+					$('#ipt3').val($(this).find('.currencys:first-child').text());
+					$('#ipt3').attr('currenys',$(this).attr('currenys'));
+					$('#ipt3').siblings('span').hide()
+					$('.updateFee1 h2').text($(this).find('.name').text().split('(')[0])
+					$('.updateFee1 .e1').text(arrCurrency[$(this).attr('currenys')]+$(this).find('.v1').val());
+					$('.updateFee1 .e2').text(arrCurrency[$(this).attr('currenys')]+$(this).find('.v2').val())
+					$('.updateFee1').css('display','flex');
+				}
 				
-				$('#ipt3').val($(this).find('.currencys:first-child').text());
-				$('#ipt3').attr('currenys',$(this).attr('currenys'));
-				$('#ipt3').siblings('span').hide()
-				$('.updateFee1 h2').text($(this).find('.name').text().split('(')[0])
-				$('.updateFee1 .e1').text(arrCurrency[$(this).attr('currenys')]+$(this).find('.v1').val());
-				$('.updateFee1 .e2').text(arrCurrency[$(this).attr('currenys')]+$(this).find('.v2').val())
-				$('.updateFee1').css('display','flex');
 			}
-			
-		}
-	})
+		})
+	}else{
+		$(document).on('touchstart','#append dd',function(){
+			isclick=true;
+		})
+		$(document).on('touchmove','#append dd',function(){
+			isclick=false;
+		})
+		$(document).on('touchend','#append dd',function(){
+			if(!bOk) return;
+			if(isclick){
+				$('#append dd').removeClass('active')
+				$(this).addClass('active');
+				if($(this).attr('byorder')=='1'){
+					$('#ipt5').val($(this).find('.currencys:first-child').text());
+					$('#ipt5').attr('currenys',$(this).attr('currenys'));
+					$('#ipt5').siblings('span').hide()
+					$('.updateFee2 h2').text($(this).find('.name').text().split('(')[0])
+					$('.updateFee2 .e3').text(arrCurrency[$(this).attr('currenys')]+$(this).find('input').val());
+					$('.updateFee2').css('display','flex');
+				}else{
+					
+					$('#ipt3').val($(this).find('.currencys:first-child').text());
+					$('#ipt3').attr('currenys',$(this).attr('currenys'));
+					$('#ipt3').siblings('span').hide()
+					$('.updateFee1 h2').text($(this).find('.name').text().split('(')[0])
+					$('.updateFee1 .e1').text(arrCurrency[$(this).attr('currenys')]+$(this).find('.v1').val());
+					$('.updateFee1 .e2').text(arrCurrency[$(this).attr('currenys')]+$(this).find('.v2').val())
+					$('.updateFee1').css('display','flex');
+				}
+				
+			}
+		})
+	}
+	
 	$('#ipt3,#ipt5').parent().on('touchstart',function(){
 		var _this=this;
 		var Select = new IosSelect(1, 
@@ -354,16 +379,16 @@
 	})
 	$('#updateFeeBtn1').on('touchstart',function(){
 		if($('#ipt1').val()){
-			$('#append .Fees.active').find('.v1').val($('#ipt1').val())
+			$('#append dd.active').find('.v1').val($('#ipt1').val())
 		}
 		if($('#ipt2').val()){
-			$('#append .Fees.active').find('.v2').val($('#ipt2').val())
+			$('#append dd.active').find('.v2').val($('#ipt2').val())
 		}
 		$('#ipt1').val('')
 		$('#ipt1').siblings('span').show();
 		$('#ipt2').siblings('span').show();
 		$('#ipt2').val('')
-		toTotal($('#append .Fees.active'))
+		toTotal($('#append dd.active'))
 		
 		toTotalAll();
 		toTotalFeesAll();
@@ -372,7 +397,7 @@
 	})
 	$('#updateFeeBtn2').on('touchstart',function(){
 		if($('#ipt4').val()){
-			$('#append .Fees.active').find('input').val($('#ipt4').val())
+			$('#append dd.active').find('input').val($('#ipt4').val())
 		}
 		$('#ipt4').val('')
 		$('#ipt4').siblings('span').show();
